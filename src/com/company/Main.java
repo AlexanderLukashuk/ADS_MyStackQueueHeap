@@ -48,5 +48,8 @@ public class Main {
         queue.showMyQueue();
         System.out.println("Size = " + queue.size());
         System.out.println("Peek = " + queue.peek());
+
+        MyHeap<Integer> heap = new MyHeap<>(10);
+        System.out.println("Empty? " + heap.empty());
     }
 }

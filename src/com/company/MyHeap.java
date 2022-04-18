@@ -26,11 +26,21 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     public T deleteMin() {
+        T popped = (T) heap[0];
+        heap[0] = heap[heapSize--];
+        heapify(0);
 
+        return popped;
     }
 
     public void insert(T item) {
-        
+        heap[++heapSize] = item;
+        int current = heapSize;
+
+        while (((Comparable<T>)heap[leftChildOf(current)]).compareTo((T)heap[rightChildOf(current)]) < 0) {
+            swap(current, parentOf(current));
+            current = parentOf(current);
+        }
     }
 
     private void heapify(int index) {
