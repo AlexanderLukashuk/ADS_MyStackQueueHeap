@@ -48,44 +48,6 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
 
     @Override
     public boolean remove(T item) {
-//        for (MyNode<T> i = head; i != null; i = i.next) {
-//            if (i.data == item) {
-//                //i.prev = i.next;
-//                System.out.println(i.data);
-//                i = i.next;
-//                return true;
-//            }
-//        }
-//        return false;
-
-//        MyNode<T> elem = head;
-//
-//        while (elem.data != item) {
-//            elem = elem.next;
-//        }
-//
-//        MyNode<T> current = elem.next;
-//        elem.next = current.next;
-//        length--;
-//        return true;
-
-
-//        for (MyNode<T> i = head; i != null; i = i.next) {
-//            if (i.data == item) {
-//                if (i == head) {
-//                    head = head.next;
-//                } else if (i == tail) {
-//                    tail = tail.prev;
-//                } else {
-////                    MyNode<T> current = i.next;
-////                    i = current.next;
-//                    i.next.prev = i.prev;
-//                }
-//                length--;
-//                return true;
-//            }
-//        }
-
         if (item == head.data) {
             head.next.prev = null;
             head = head.next;
@@ -97,9 +59,7 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
             return true;
         } else {
             MyNode<T> current = head;
-//            while (current.data != item) {
-//                current = current.next;
-//            }
+
             for (int i = 0; i < length; i++) {
                 if (current.data == item) {
                     current.next.prev = current.prev;
@@ -127,50 +87,6 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
         elem.next = current.next;
         length--;
         return current.data;
-
-//        if (index < 0 || index >= length) {
-//            return null;
-//        } else if (index == 0) {
-//            MyNode<T> temp = head;
-//            head = head.next;
-//            length--;
-//            return temp.data;
-//        } else if (index == length - 1) {
-//            MyNode<T> current = head;
-//
-//            for (int i = 0; i < length - 2; i++) {
-//                current = current.next;
-//            }
-//
-//            MyNode<T> temp = tail;
-//            tail = current;
-//            tail.next = null;
-//            length--;
-//            return temp.data;
-//        } else {
-//            MyNode<T> previous = head;
-//
-//            for (int i = 1; i < index; i++) {
-//                previous = previous.next;
-//            }
-//
-//            MyNode<T> current = previous.next;
-//            previous.next = current.next;
-//            length--;
-//            return current.data;
-//        }
-
-
-//        int count = 0;
-//        for (MyNode<T> i = head; i != null; i = i.next) {
-//            if (count == index) {
-//                //i.prev = i.next;
-//                i = i.next;
-//                break;
-//            }
-//            count++;
-//        }
-//        return null;
     }
 
     @Override
@@ -257,6 +173,13 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
             System.out.print(i.data + " ");
         }
         System.out.println();
+    }
+
+    public T peek() {
+        if (tail != null) {
+            return (T) tail;
+        }
+        return null;
     }
 
 }
