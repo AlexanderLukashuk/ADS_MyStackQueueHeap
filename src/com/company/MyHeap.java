@@ -41,16 +41,16 @@ public class MyHeap<T> {
 
     }
 
-    private T leftChildOf(int index) {
-        return (T)heap[d * index + 1];
+    private int leftChildOf(int index) {
+        return d * index + 1;
     }
 
-    private T rightChildOf(int index) {
-        return (T)heap[d * index + 2];
+    private int rightChildOf(int index) {
+        return d * index + 2;
     }
 
-    private T parentOf(int index) {
-        return (T)heap[(index - 1) / d];
+    private int parentOf(int index) {
+        return (index - 1) / d;
     }
 
     private void swap(int index1, int index2) {
