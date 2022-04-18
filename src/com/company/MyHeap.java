@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Arrays;
 
-public class MyHeap<T> {
+public class MyHeap<T extends Comparable<T>> {
     private int d = 2;
     private Object[] heap;
     private int heapSize;
@@ -30,11 +30,19 @@ public class MyHeap<T> {
     }
 
     public void insert(T item) {
-
+        
     }
 
     private void heapify(int index) {
-
+        if (((Comparable<T>)heap[index]).compareTo((T)heap[leftChildOf(index)]) > 0 || ((Comparable<T>)heap[index]).compareTo((T)heap[rightChildOf(index)]) > 0) {
+            if (((Comparable<T>)heap[leftChildOf(index)]).compareTo((T)heap[rightChildOf(index)]) < 0) {
+                swap(index, leftChildOf(index));
+                heapify(leftChildOf(index));
+            } else {
+                swap(index, rightChildOf(index));
+                heapify(rightChildOf(index));
+            }
+        }
     }
 
     private void traverseUp(int index) {
@@ -54,6 +62,10 @@ public class MyHeap<T> {
     }
 
     private void swap(int index1, int index2) {
+        T tmp;
+        tmp = (T) heap[index1];
 
+        heap[index1] = heap[index2];
+        heap[index2] = tmp;
     }
 }
