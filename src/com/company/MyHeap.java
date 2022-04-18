@@ -42,18 +42,18 @@ public class MyHeap<T> {
     }
 
     private T leftChildOf(int index) {
-
+        return (T)heap[d * index + 1];
     }
 
     private T rightChildOf(int index) {
-
+        return (T)heap[d * index + 2];
     }
 
     private T parentOf(int index) {
-
+        return (T)heap[(index - 1) / d];
     }
 
     private void swap(int index1, int index2) {
-        
+
     }
 }
